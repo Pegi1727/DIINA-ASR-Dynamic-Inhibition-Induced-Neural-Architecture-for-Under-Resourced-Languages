@@ -1,0 +1,32 @@
+LINEAR MIXED-EFFECTS MODEL RESULTS
+===============================
+Requested full fixed-effects model: wer ~ C(Language) + C(DataRegime_Group)
+Random structure attempted: speaker random intercept (groups=Speaker) plus item variance component (0 + C(Item)).
+Status: NOT ESTIMABLE. statsmodels raised LinAlgError: Singular matrix.
+Reason: Language is perfectly determined by regime in this dataset (24 rows, 6 speakers, 24 unique Items): AZB occurs only in Expressive_Dialectal, MultiSpeaker_Studio, Spontaneous_Vernacular; HEB_SCO occurs only in Archival_OralHistory, Heritage_Introduction. Fixed-effects design matrix rank=5 of 6 columns. Every Item occurs once, so item random-intercept variance is not separately estimable.
+
+IDENTIFIABLE FALLBACK FIT (descriptive; regime only, Speaker random intercept):
+Formula: wer ~ C(DataRegime_Group); groups=Speaker; ML; Powell optimizer.
+The near-zero speaker variance (boundary) and only 6 speakers mean inferential results should be treated cautiously.
+
+                        Mixed Linear Model Regression Results
+======================================================================================
+Model:                        MixedLM            Dependent Variable:            wer   
+No. Observations:             24                 Method:                        ML    
+No. Groups:                   6                  Scale:                         0.0478
+Min. group size:              2                  Log-Likelihood:                2.4308
+Max. group size:              6                  Converged:                     Yes   
+Mean group size:              4.0                                                     
+--------------------------------------------------------------------------------------
+                                              Coef. Std.Err.   z   P>|z| [0.025 0.975]
+--------------------------------------------------------------------------------------
+Intercept                                     0.216    0.066 3.275 0.001  0.087  0.345
+C(DataRegime_Group)[T.Expressive_Dialectal]   0.409    0.168 2.434 0.015  0.080  0.739
+C(DataRegime_Group)[T.Heritage_Introduction]  0.003    0.128 0.022 0.982 -0.247  0.253
+C(DataRegime_Group)[T.MultiSpeaker_Studio]    0.190    0.128 1.491 0.136 -0.060  0.441
+C(DataRegime_Group)[T.Spontaneous_Vernacular] 0.459    0.142 3.223 0.001  0.180  0.738
+Group Var                                     0.000                                   
+======================================================================================
+
+
+Interpretation: coefficients are relative to the alphabetically first regime (Archival_OralHistory). No coefficient here adjusts for Language; Language and regime cannot be separated with the present sample.
